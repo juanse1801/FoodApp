@@ -1,0 +1,33 @@
+.landingpage{
+    background-image: url('../../sources/Healthy\ food.jpg');
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    background-size:198vh 100vh;
+    width: 198vh;
+    height: 100vh;
+}
+
+.landingcont{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    padding-left: 800px;
+    padding-bottom: 300px;
+    font-family: 'Ubuntu';
+    font-size: 40px;
+    color: #90A641;
+}
+
+.botonlanding{
+    background-color:#D7D7D9;
+    padding:10px;
+    text-decoration: none;
+    color: black;
+    border-radius: 15px;
+}
+
+.botonlanding:hover{
+    background-color:#90A641;
+}

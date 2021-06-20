@@ -1,0 +1,22 @@
+.navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    background-color: #90A641;
+    width: 100;
+    padding: 10px;
+}
+
+.linknavbar{
+    text-decoration: none;
+    color:black;
+    font-size: 30px;
+}
+
+.divbar{
+    background-color:#D7D7D9;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 15px;
+}
+

@@ -1,0 +1,52 @@
+.details{
+    background-color:#D7D7D9;
+    display:flex;
+    flex-direction:column;
+    flex:1;
+    
+}
+
+.detailcont{
+    display: flex;
+    flex-direction: column;
+}
+
+.imagedetail{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+}
+
+.imagecont{
+    width: 500px;
+    height: 400x;
+}
+
+.namedetail{
+    font-family: 'Ubuntu';
+    color: black;
+    font-size:25px;
+    display:flex;
+    justify-content:center;
+    font-weight: bold;
+
+}
+
+.resumedetail{
+    font-family:'Ubuntu';
+    padding: 20px;
+}
+
+.dietsdetail{
+    font-family:'Ubuntu';
+    padding: 20px;
+    list-style: none;
+    list-style-image: url('../../sources/chinese-food.png');
+}
+
+.scoresdetail{
+    font-family:'Ubuntu';
+    padding: 20px;
+}

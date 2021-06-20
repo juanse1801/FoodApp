@@ -1,0 +1,45 @@
+.recipes{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    
+}
+
+.pruebarep{
+    display: flex;
+    flex-direction: column;
+    background-color:#90A641;
+    justify-content:left;
+    border-radius: 15px;
+}
+
+.link{
+    text-decoration: none;
+}
+
+.pname{
+    font-family: 'Ubuntu';
+    color: black;
+    font-size: 16px;
+    display:flex;
+    justify-content:center;
+    font-weight: bold;
+}
+
+.image{
+    border-radius: 15px;
+}
+
+.listrecipes{
+    color:black;
+    list-style: none;
+    font-size: 15px;
+    list-style-image: url('../../sources/chinese-food.png');
+    font-family:'Times New Roman';
+    font-style: normal;
+
+}
+
+.pname:hover{
+    color:white;
+}

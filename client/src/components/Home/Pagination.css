@@ -1,0 +1,15 @@
+.pages{
+    display: flex;
+    justify-content:center;
+    flex-direction: row;
+    font-family: 'Ubuntu';
+}
+
+.pageshover{
+    border:solid #D7D7D9;
+    border-radius: 5px;
+}
+
+.pageshover:hover{
+    background-color: #90A641;
+}
