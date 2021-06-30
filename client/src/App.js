@@ -1,6 +1,5 @@
 import React from 'react';
 import LandingPage from './components/LandingPage/LandingPage';
-import NavBar from './components/NavBar/NavBar';
 import {Route} from 'react-router-dom';
 import './App.css';
 import CreateRecipe from './components/CreateRecipe/CreateRecipe';

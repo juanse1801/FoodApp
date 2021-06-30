@@ -7,8 +7,7 @@ const initialState={
     filterRecipes:[],
     dietsFilter:[],
     diets:[],
-    details:[],
-    successfullPost:''    
+    details:[],   
 }
 
 function reducer(state=initialState,action){
@@ -43,7 +42,6 @@ function reducer(state=initialState,action){
             axios.post('http://localhost:3001/recipe',action.payload)
             return {
                 ...state,
-                successfullPost:'Post agregado'
             }
         
         }

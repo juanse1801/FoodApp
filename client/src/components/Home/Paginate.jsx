@@ -1,4 +1,4 @@
-import React,{useState,useEffect,useReducer} from 'react';
+import React,{useState,useEffect} from 'react';
 import { getAllRecipes, getQueryRecipes,filterbyDiet,getDiets, dietsFiltered, dietsDecrement } from '../../actions/actions';
 import Recipes from './Recipes';
 import Pagination from './Pagination';
@@ -16,8 +16,6 @@ export const Paginate=({getAllRecipes,recipes,getQueryRecipes,filterbyDiet,diets
     const [sortB,setSortB]=useState('');
     const [sortC,setSortC]=useState('');
     const [sortD,setSortD]=useState('');
-    const [filterState]=useState('');
-    const [dietsState,setDietsState]=useState([]);//FALTA
 
 
     useEffect(()=>{

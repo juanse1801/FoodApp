@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import {Link,NavLink} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {getIdRecipes} from '../../actions/actions';
 import NavBar from '../NavBar/NavBar';
