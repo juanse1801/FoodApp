@@ -2,13 +2,14 @@ import React from 'react';
 import {Link,NavLink} from 'react-router-dom';
 import './Recipes.css';
 import reserva from '../../sources/imagenreserva.jpg'
+import { cleanDetails } from '../../actions/actions';
+import { connect } from 'react-redux';
 
-export const Recipes=({recipes,loading})=>{
+export const Recipes=({recipes,loading,cleanDetails})=>{
 
     if(loading){
         return (<h2>Loading..,</h2>)
     }
-
 
 
     return(
@@ -19,8 +20,8 @@ export const Recipes=({recipes,loading})=>{
                         {recipe.image!==null?<img src={`${recipe.image}`} className='image'/>:<img src={reserva}/>}
                     </div>
                 <div key={recipe.id}>
-                    {recipe.name.length<35?<NavLink to={`/recipeDetails/${recipe.id}`} className='link'><div className='pname'>{recipe.name}</div></NavLink>:
-                    <NavLink to={`/recipeDetails/${recipe.id}`} className='link'><div className='pname'>{recipe.name.slice(0,recipe.name.length/2)}</div>
+                    {recipe.name.length<35?<NavLink to={`/recipeDetails/${recipe.id}`} className='link'onClick={()=>cleanDetails()}><div className='pname'>{recipe.name}</div></NavLink>:
+                    <NavLink to={`/recipeDetails/${recipe.id}`} className='link' onClick={()=>cleanDetails()}><div className='pname'>{recipe.name.slice(0,recipe.name.length/2)}</div>
                     <div className='pname'>{recipe.name.slice(recipe.name.length/2,recipe.name.length)}</div></NavLink>}
                 </div>
                 <div className='diets'>
@@ -39,4 +40,19 @@ export const Recipes=({recipes,loading})=>{
     )
 }
 
-export default Recipes;
+const mapStateToProps=(state)=>{
+    return {
+        details:state.details
+    }
+}
+
+const mapDispatchToProps=(dispatch)=>{
+    return {
+        cleanDetails:()=>dispatch(cleanDetails()),
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Recipes);
+
+
+

@@ -7,7 +7,7 @@ import './Paginate.css';
 import NavBar from '../NavBar/NavBar';
 
 
-export const Paginate=({getAllRecipes,recipes,getQueryRecipes,filterbyDiet,diets,getDiets,filterRecipes,dietsFiltered,dietsFilter,dietsDecrement})=>{
+export const Paginate=({getAllRecipes,recipes,getQueryRecipes,filterbyDiet,diets,getDiets,filterRecipes,dietsFiltered,dietsFilter,dietsDecrement,details})=>{
     const [query,setQuery]=useState('');
     const [loading,setLoading]=useState(false);
     const [currentPage,setCurrentpage]=useState(1);

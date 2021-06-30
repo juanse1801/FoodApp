@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {SET_RECIPES,GET_QUERYRECIPES,GET_IDRECIPES,GET_DIETS, POST_RECIPE,FILTER_BY_DIET,DIETS_FILTER, DIETS_DECREMENT} from '../actions/actionsNames';
+import {SET_RECIPES,GET_QUERYRECIPES,GET_IDRECIPES,GET_DIETS, POST_RECIPE,FILTER_BY_DIET,DIETS_FILTER, DIETS_DECREMENT, CLEAN_DETAILS} from '../actions/actionsNames';
 
 
 const initialState={
@@ -74,6 +74,13 @@ function reducer(state=initialState,action){
             return {
                 ...state,
                 dietsFilter:state.dietsFilter.filter(diets=>diets!==action.payload)
+            }
+        }
+
+        case CLEAN_DETAILS:{
+            return {
+                ...state,
+                details:[]
             }
         }
 

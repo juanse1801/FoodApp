@@ -28,6 +28,6 @@ Web App in JavaScript to find recipes, filter them by diets, sort them by score 
 - DB_USER= your_user
 - DB_PASSWORD=your_pass
 - DB_HOST=localhost(database host)
-- apiKey=your_api_key
+- API_KEY=your_api_key
 - Run npm i on the api and the client to install the necessary dependencies
 - Run npm start on the api and the client
