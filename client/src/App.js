@@ -8,7 +8,7 @@ import Paginate from './components/Home/Paginate';
 
 function App() {
   return (
-    <div>
+    <div className='app'>
     <React.Fragment>
      <Route exact path="/" component={LandingPage}/>
      <Route path="/home" component={Paginate}/>

@@ -1,5 +1,6 @@
 import axios from 'axios';
-import {SET_RECIPES,GET_QUERYRECIPES,GET_IDRECIPES,GET_DIETS, POST_RECIPE,FILTER_BY_DIET,DIETS_FILTER, DIETS_DECREMENT, CLEAN_DETAILS} from '../actions/actionsNames';
+import {SET_RECIPES,GET_QUERYRECIPES,GET_IDRECIPES,GET_DIETS, POST_RECIPE,FILTER_BY_DIET,DIETS_FILTER, DIETS_DECREMENT, CLEAN_DETAILS,SORT_BY_ABC,DISPLAY_CHECK} from '../actions/actionsNames';
+import { handleSelect } from './sortsfunctions';
 
 
 const initialState={
@@ -7,23 +8,24 @@ const initialState={
     filterRecipes:[],
     dietsFilter:[],
     diets:[],
-    details:[],   
+    details:[],
+    displayCheck:['on']
+
 }
+
 
 function reducer(state=initialState,action){
     switch(action.type){
         case SET_RECIPES:{
             return {
                 ...state,
-                recipes:action.payload,
-                
+                recipes:action.payload,   
             };
         }
         case GET_QUERYRECIPES:{
             return {
                 ...state,
-                recipes:action.payload,
-                
+                recipes:action.payload,  
             }
         }
         case GET_IDRECIPES:{
@@ -81,7 +83,16 @@ function reducer(state=initialState,action){
                 details:[]
             }
         }
+        case SORT_BY_ABC:{
+            return handleSelect(state,action.payload)
 
+        }
+        case DISPLAY_CHECK:{
+            return {
+                ...state,
+                displayCheck:state.displayCheck.includes(action.payload)?state.displayCheck.filter(el=>el!==action.payload):[...state.displayCheck,action.payload]
+            }
+        }
 
 
         default:{

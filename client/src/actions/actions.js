@@ -2,7 +2,7 @@
 //GET RECIPE DETAIL
 //GET DIET
 import axios from 'axios';
-import {SET_RECIPES,GET_QUERYRECIPES,GET_IDRECIPES,GET_DIETS,POST_RECIPE,FILTER_BY_DIET,DIETS_FILTER, DIETS_DECREMENT,CLEAN_DETAILS} from './actionsNames'
+import {SET_RECIPES,GET_QUERYRECIPES,GET_IDRECIPES,GET_DIETS,POST_RECIPE,FILTER_BY_DIET,DIETS_FILTER, DIETS_DECREMENT,CLEAN_DETAILS,SORT_BY_ABC,DISPLAY_CHECK} from './actionsNames'
 
 export function getAllRecipes(){
     return (dispatch)=>{
@@ -54,4 +54,12 @@ export function dietsDecrement(payload){
 
 export function cleanDetails(){
     return {type:CLEAN_DETAILS}
+}
+
+export function sortByAbc(payload){
+    return {type:SORT_BY_ABC,payload:payload}
+}
+
+export function displayCheckBox(payload){
+    return {type:DISPLAY_CHECK,payload:payload}
 }

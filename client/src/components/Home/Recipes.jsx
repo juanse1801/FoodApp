@@ -25,7 +25,7 @@ export const Recipes=({recipes,loading,cleanDetails})=>{
                     <div className='pname'>{recipe.name.slice(recipe.name.length/2,recipe.name.length)}</div></NavLink>}
                 </div>
                 <div className='diets'>
-                    <p5>Diets:</p5>
+                    Diets:
                     <div>
                         {recipe.diets.map(diet=>(
                             <li className='listrecipes'>

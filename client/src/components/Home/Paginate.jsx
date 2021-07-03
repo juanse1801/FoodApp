@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react';
-import { getAllRecipes, getQueryRecipes,filterbyDiet,getDiets, dietsFiltered, dietsDecrement } from '../../actions/actions';
+import { getAllRecipes, getQueryRecipes,filterbyDiet,getDiets, dietsFiltered, dietsDecrement, sortByAbc, displayCheckBox } from '../../actions/actions';
 import Recipes from './Recipes';
 import Pagination from './Pagination';
 import {connect} from 'react-redux';
@@ -7,15 +7,12 @@ import './Paginate.css';
 import NavBar from '../NavBar/NavBar';
 
 
-export const Paginate=({getAllRecipes,recipes,getQueryRecipes,filterbyDiet,diets,getDiets,filterRecipes,dietsFiltered,dietsFilter,dietsDecrement,details})=>{
+export const Paginate=({getAllRecipes,recipes,getQueryRecipes,filterbyDiet,diets,getDiets,filterRecipes,dietsFiltered,dietsFilter,dietsDecrement,details,sortByAbc,checkBox,displayCheck})=>{
     const [query,setQuery]=useState('');
     const [loading,setLoading]=useState(false);
     const [currentPage,setCurrentpage]=useState(1);
     const [recipesPerPage,setRecipesPerPage]=useState(8);
-    const [sortA,setSortA]=useState('');
-    const [sortB,setSortB]=useState('');
-    const [sortC,setSortC]=useState('');
-    const [sortD,setSortD]=useState('');
+    const [sortABC,setSortABC]=useState('')
 
 
     useEffect(()=>{
@@ -33,97 +30,24 @@ export const Paginate=({getAllRecipes,recipes,getQueryRecipes,filterbyDiet,diets
         setQuery(event.target.value);
     };
 
-    const handleSortA=(event)=>{
-        if(event.target.checked){
-            setCurrentpage(1)
-            setSortA('sortA');
-            recipes.sort(function (a,b){
-                if(a.name>b.name){
-                    return 1;
-                }
-                if(a.name<b.name){
-                    return -1;
-                }
-                return 0
-            })
+    const handleSelect=(event)=>{
+        setSortABC(event.target.value);
+        setCurrentpage(1);
+        if(query.length){
+            event.target.value==='1'?getQueryRecipes(query):sortByAbc(event.target.value)
         }else{
-            setSortA('')
-            if(query.length){
-                getQueryRecipes(query);
-            }else{
-                getAllRecipes();
-            }
+            event.target.value==='1'?getAllRecipes():sortByAbc(event.target.value)
         }
+        
     }
 
-
-    const handleSortB=(event)=>{
-        if(event.target.checked){
-            setCurrentpage(1)
-            setSortB('sortB');
-            recipes.sort(function (a,b){
-                if(b.name>a.name){
-                    return 1;
-                }
-                if(b.name<a.name){
-                    return -1;
-                }
-                return 0
-            })
-        }else{
-            setSortB('')
-            if(query.length){
-                getQueryRecipes(query);
-            }else{
-                getAllRecipes();
-            }
-        }
+    const clearSearch=()=>{
+        setQuery('');
+        getAllRecipes();
     }
 
-    const handleSortC=(event)=>{
-        if(event.target.checked){
-            setCurrentpage(1)
-            setSortC('sortC');
-            recipes.sort(function (a,b){
-                if(a.score>b.score){
-                    return 1;
-                }
-                if(a.score<b.score){
-                    return -1;
-                }
-                return 0
-            })
-        }else{
-            setSortC('')
-            if(query.length){
-                getQueryRecipes(query);
-            }else{
-                getAllRecipes();
-            }
-        }
-    }
-
-    const handleSortD=(event)=>{
-        if(event.target.checked){
-            setCurrentpage(1)
-            setSortD('sortD');
-            recipes.sort(function (a,b){
-                if(b.score>a.score){
-                    return 1;
-                }
-                if(b.score<a.score){
-                    return -1;
-                }
-                return 0
-            })
-        }else{
-            setSortD('')
-            if(query.length){
-                getQueryRecipes(query);
-            }else{
-                getAllRecipes();
-            }
-        }
+    const handleDisplay=(event)=>{
+        displayCheck(event.target.value)
     }
 
     const handleFilter=(event)=>{
@@ -171,29 +95,34 @@ export const Paginate=({getAllRecipes,recipes,getQueryRecipes,filterbyDiet,diets
                         <input
                         type='text'
                         autoComplete='off'
-                        onChange={(event)=>handleChange(event)} className='searchcont'>
+                        onChange={(event)=>handleChange(event)} className='searchcont' value={query}>
                         </input>
                             <button type='submit' className='submitsearch'>Search</button>
+                            <button type='button' className='submitsearch' onClick={()=>clearSearch()}>Clear Search</button>
                     </form>
-                Sort by A-Z:
-                <input type='checkbox' onChange={(event)=>handleSortA(event)} value={sortA}>
-                </input>
-                Sort by Z-A:
-                <input type='checkbox' onChange={(event)=>handleSortB(event)} value={sortB}>
-                </input>
-                Sort by Max Score:
-                <input type='checkbox' onChange={(event)=>handleSortC(event)} value={sortC}>
-                </input>
-                Sort by Min Score:
-                <input type='checkbox' onChange={(event)=>handleSortD(event)} value={sortD}>
-                </input>
-            {diets.map((diet)=>(
-                            <label>
+                <select name="sorts" id="" onChange={(event)=>handleSelect(event)} className='submitsearch'>
+                    <option value="1" className='options'>Default</option>
+                    <option value="2" className='options'>Sort by A-Z</option>
+                    <option value="3" className='options'>Sort by Z-A</option>
+                    <option value="4" className='options'>Sort by max score</option>
+                    <option value="5" className='options'>Sort by min score</option>
+                </select>
+                    <button onClick={(event)=>handleDisplay(event)} value="on" className='submitsearch'>Filter by diet</button>
+                    {checkBox.length?diets.map((diet)=>{
+                        if(dietsFilter.includes(diet.name)){
+                            return (<label>
+                                {diet.name}
+                                <input type='checkbox' onChange={(event)=>handleFilter(event)} value={diet.name} checked='true'>
+                                </input>
+                            </label>)
+                        }else{
+                            return (<label>
                                 {diet.name}
                                 <input type='checkbox' onChange={(event)=>handleFilter(event)} value={diet.name}>
                                 </input>
-                            </label>
-                        ))}
+                            </label>)
+                        }
+                    }):<p></p>}
             </header>
             <div className='recipescontainer'>
             <Recipes recipes={recipes1} loading={loading}/>
@@ -213,7 +142,8 @@ const  mapStateToProps=(state)=>{
         recipes:state.recipes,
         diets:state.diets,
         filterRecipes:state.filterRecipes,
-        dietsFilter:state.dietsFilter
+        dietsFilter:state.dietsFilter,
+        checkBox:state.displayCheck
     };
 };
 
@@ -224,7 +154,9 @@ const  mapDispatchToProps=(dispatch)=>{
         filterbyDiet:(payload)=>dispatch(filterbyDiet(payload)),
         getDiets:()=>dispatch(getDiets()),
         dietsFiltered:(payload)=>dispatch(dietsFiltered(payload)),
-        dietsDecrement:(payload)=>dispatch(dietsDecrement(payload))
+        dietsDecrement:(payload)=>dispatch(dietsDecrement(payload)),
+        sortByAbc:(payload)=>dispatch(sortByAbc(payload)),
+        displayCheck:(payload)=>dispatch(displayCheckBox(payload))
     };
 };
 

@@ -5,18 +5,39 @@
     background-color: #90A641;
     width: 100;
     padding: 10px;
+    height: 50px;
 }
 
 .linknavbar{
     text-decoration: none;
     color:black;
     font-size: 30px;
-}
-
-.divbar{
     background-color:#D7D7D9;
     padding-left: 15px;
     padding-right: 15px;
     border-radius: 15px;
+    height: 40px;
+}
+
+.divbar{
+    background-color:#D7D7D9;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-radius: 15px;
+    height: 40px;
+}
+.linknavbar:hover{
+    background-color:#90A641;
+}
+
+.title{
+    background-color:#D7D7D9;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 15px;
+    height: 40px;
+    font-size: 30px;
 }
 
