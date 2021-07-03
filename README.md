@@ -31,3 +31,6 @@ Web App in JavaScript to find recipes, filter them by diets, sort them by score 
 - API_KEY=your_api_key
 - Run npm i on the api and the client to install the necessary dependencies
 - Run npm start on the api and the client
+
+## LINK PROYECT DEPLOYED: 
+https://frontend-food.herokuapp.com/
