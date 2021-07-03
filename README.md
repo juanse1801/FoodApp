@@ -22,7 +22,7 @@ Web App in JavaScript to find recipes, filter them by diets, sort them by score 
 
 ## To run this project:
 
-- Create an SQL database named food
+- Create an PostgreSQL database named food
 - Get an API key on https://spoonacular.com/food-api/
 - Create an .env file in the folder api with the next variables:
 - DB_USER= your_user
